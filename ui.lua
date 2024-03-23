@@ -4558,8 +4558,13 @@ function sections:configloader(props)
 	end)
 	--
 	load[3].MouseButton1Down:Connect(function()
-		self.library:loadconfig(folder.."/"..selected.name..".cfg")
-        print("melonware.cc | ✅ | loaded config. path: " .. folder.."/"..currentname..".cfg")
+		local success, errorMessage = pcall(function()
+			self.library:loadconfig(folder.."/"..selected.name..".cfg")
+			print("melonware.cc | ✅ | loaded config. path: " .. folder.."/"..currentname..".cfg")
+		end)
+		if not success then
+			print("melonware.cc | ❌ | failed to load config")
+		end
 		load[2].BorderColor3 = self.library.theme.accent
 		wait(0.05)
 		load[2].BorderColor3 = Color3.fromRGB(12,12,12)
