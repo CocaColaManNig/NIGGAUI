@@ -4571,8 +4571,13 @@ function sections:configloader(props)
 	end)
 	--
 	delete[3].MouseButton1Down:Connect(function()
-		delfile(folder.."/"..selected.name..".cfg")
-        print("melonware.cc | ✅ | deleted config. path: " .. folder.."/"..currentname..".cfg")
+		local success, errorMessage = pcall(function()
+			delfile(folder.."/"..selected.name..".cfg")
+        	print("melonware.cc | ✅ | deleted config. path: " .. folder.."/"..currentname..".cfg")
+		end)
+		if not success then
+			print("melonware.cc | ❌ | failed to delete config")
+		end
 		delete[2].BorderColor3 = self.library.theme.accent
 		wait(0.05)
 		delete[2].BorderColor3 = Color3.fromRGB(12,12,12)
@@ -4581,8 +4586,13 @@ function sections:configloader(props)
 	end)
 	--
 	save[3].MouseButton1Down:Connect(function()
-		writefile(folder.."/"..selected.name..".cfg", self.library:saveconfig())
-        print("melonware.cc | ✅ | saved config. path: " .. folder.."/"..currentname..".cfg")
+		local success, errorMessage = pcall(function()
+			writefile(folder.."/"..selected.name..".cfg", self.library:saveconfig())
+        	print("melonware.cc | ✅ | saved config. path: " .. folder.."/"..currentname..".cfg")
+		end)
+		if not success then
+			print("melonware.cc | ❌ | failed to save config")
+		end
 		save[2].BorderColor3 = self.library.theme.accent
 		wait(0.05)
 		save[2].BorderColor3 = Color3.fromRGB(12,12,12)
@@ -4591,8 +4601,13 @@ function sections:configloader(props)
 	end)
 	--
 	create[3].MouseButton1Down:Connect(function()
-		writefile(folder.."/"..currentname..".cfg", self.library:saveconfig())
-        print("melonware.cc | ✅ | created config. path: " .. folder.."/"..currentname..".cfg")
+		local success, errorMessage = pcall(function()
+			writefile(folder.."/"..currentname..".cfg", self.library:saveconfig())
+        	print("melonware.cc | ✅ | created config. path: " .. folder.."/"..currentname..".cfg")
+		end)
+		if not success then
+			print("melonware.cc | ❌ | failed to create config")
+		end
 		create[2].BorderColor3 = self.library.theme.accent
 		wait(0.05)
 		create[2].BorderColor3 = Color3.fromRGB(12,12,12)
