@@ -4559,6 +4559,7 @@ function sections:configloader(props)
 	--
 	load[3].MouseButton1Down:Connect(function()
 		self.library:loadconfig(folder.."/"..selected.name..".cfg")
+        print("melonware.cc | ✅ | loaded config. path: " .. folder.."/"..currentname..".cfg")
 		load[2].BorderColor3 = self.library.theme.accent
 		wait(0.05)
 		load[2].BorderColor3 = Color3.fromRGB(12,12,12)
@@ -4566,6 +4567,7 @@ function sections:configloader(props)
 	--
 	delete[3].MouseButton1Down:Connect(function()
 		delfile(folder.."/"..selected.name..".cfg")
+        print("melonware.cc | ✅ | deleted config. path: " .. folder.."/"..currentname..".cfg")
 		delete[2].BorderColor3 = self.library.theme.accent
 		wait(0.05)
 		delete[2].BorderColor3 = Color3.fromRGB(12,12,12)
@@ -4575,6 +4577,7 @@ function sections:configloader(props)
 	--
 	save[3].MouseButton1Down:Connect(function()
 		writefile(folder.."/"..selected.name..".cfg", self.library:saveconfig())
+        print("melonware.cc | ✅ | saved config. path: " .. folder.."/"..currentname..".cfg")
 		save[2].BorderColor3 = self.library.theme.accent
 		wait(0.05)
 		save[2].BorderColor3 = Color3.fromRGB(12,12,12)
@@ -4584,6 +4587,7 @@ function sections:configloader(props)
 	--
 	create[3].MouseButton1Down:Connect(function()
 		writefile(folder.."/"..currentname..".cfg", self.library:saveconfig())
+        print("melonware.cc | ✅ | created config. path: " .. folder.."/"..currentname..".cfg")
 		create[2].BorderColor3 = self.library.theme.accent
 		wait(0.05)
 		create[2].BorderColor3 = Color3.fromRGB(12,12,12)
