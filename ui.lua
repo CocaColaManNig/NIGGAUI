@@ -4583,33 +4583,13 @@ function sections:configloader(props)
 	end)
 	--
 	create[3].MouseButton1Down:Connect(function()
-        if folder == nil then
-            print("Error: 'folder' is nil")
-            return
-        end
-        if currentname == nil then
-            print("Error: 'currentname' is nil")
-            return
-        end
-        local filePath = folder .. currentname .. ".cfg"
-        print("File Path:", filePath)
-        if self.library == nil or type(self.library.saveconfig) ~= "function" then
-            print("Error: 'library' or 'saveconfig' method is not accessible")
-            return
-        end
-        local success, errorMsg = pcall(function()
-            writefile(filePath, self.library:saveconfig())
-        end)
-        if not success then
-            print("Error saving file:", errorMsg)
-            return
-        end
-        create[2].BorderColor3 = self.library.theme.accent
-        wait(0.05)
-        create[2].BorderColor3 = Color3.fromRGB(12,12,12)
-        wait()
-        refresh()
-    end)
+		writefile(folder.."/"..currentname..".cfg", self.library:saveconfig())
+		create[2].BorderColor3 = self.library.theme.accent
+		wait(0.05)
+		create[2].BorderColor3 = Color3.fromRGB(12,12,12)
+		wait()
+		refresh()
+	end)
 	configloader = {
 		["library"] = self.library
 	}
